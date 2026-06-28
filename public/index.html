@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htmx Exercises</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, sans-serif; background: #f5f5f5; min-height: 100vh; }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+        header { text-align: center; margin-bottom: 3rem; }
+        header h1 { color: #333; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        header p { color: #666; font-size: 1.1rem; }
+        .exercises-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .exercise-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; display: block; }
+        .exercise-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+        .exercise-card h2 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #333; }
+        .exercise-card p { color: #666; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1rem; }
+        .difficulty { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+        .difficulty.easy { background: #e8f5e9; color: #2e7d32; }
+        .difficulty.medium { background: #fff3e0; color: #ef6c00; }
+        .difficulty.hard { background: #fce4ec; color: #c2185b; }
+        .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+        .tag { background: #f0f0f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; color: #555; }
+        .progress { margin-top: 3rem; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .progress h3 { margin-bottom: 1rem; }
+        .progress-bar { background: #eee; height: 8px; border-radius: 4px; overflow: hidden; }
+        .progress-fill { background: #1a73e8; height: 100%; border-radius: 4px; transition: width 0.3s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>htmx Exercises</h1>
+            <p>Impara htmx passo dopo passo con esercizi interattivi e test automatici</p>
+        </header>
+        
+        <div class="exercises-grid">
+            <a href="/exercises/01-basics/index.html" class="exercise-card">
+                <h2>1. Basi di htmx</h2>
+                <p>Impara i fondamenti: hx-get, hx-target, fare richieste GET e mostrare risposte.</p>
+                <span class="difficulty easy">Facile</span>
+                <div class="tags"><span class="tag">hx-get</span><span class="tag">hx-target</span></div>
+            </a>
+            
+            <a href="/exercises/02-triggers/index.html" class="exercise-card">
+                <h2>2. Trigger Events</h2>
+                <p>Cambia l'evento che scatena la richiesta: click, dblclick, mouseenter, keyup, ecc.</p>
+                <span class="difficulty easy">Facile</span>
+                <div class="tags"><span class="tag">hx-trigger</span></div>
+            </a>
+            
+            <a href="/exercises/03-swapping/index.html" class="exercise-card">
+                <h2>3. Swap Strategies</h2>
+                <p>Controlla come viene inserita la risposta: innerHTML, outerHTML, beforeend, afterbegin, ecc.</p>
+                <span class="difficulty easy">Facile</span>
+                <div class="tags"><span class="tag">hx-swap</span></div>
+            </a>
+            
+            <a href="/exercises/04-targets/index.html" class="exercise-card">
+                <h2>4. Target Selection</h2>
+                <p>Usa selettori CSS avanzati per mirare elementi specifici: closest, next, previous, ID, classi.</p>
+                <span class="difficulty medium">Medio</span>
+                <div class="tags"><span class="tag">hx-target</span><span class="tag">CSS selectors</span></div>
+            </a>
+            
+            <a href="/exercises/05-forms/index.html" class="exercise-card">
+                <h2>5. Form Handling</h2>
+                <p>Invia form via htmx: hx-post, serializzazione automatica, gestione risposta.</p>
+                <span class="difficulty medium">Medio</span>
+                <div class="tags"><span class="tag">hx-post</span><span class="tag">forms</span></div>
+            </a>
+            
+            <a href="/exercises/06-targets/index.html" class="exercise-card">
+                <h2>6. WebSockets</h2>
+                <p>Comunicazione bidirezionale in tempo reale con l'estensione WebSocket.</p>
+                <span class="difficulty hard">Difficile</span>
+                <div class="tags"><span class="tag">ws-connect</span><span class="tag">ws-send</span><span class="tag">extensions</span></div>
+            </a>
+            
+            <a href="/exercises/07-sse/index.html" class="exercise-card">
+                <h2>7. Server-Sent Events</h2>
+                <p>Aggiornamenti in tempo reale unidirezionali dal server con l'estensione SSE.</p>
+                <span class="difficulty hard">Difficile</span>
+                <div class="tags"><span class="tag">sse-connect</span><span class="tag">sse-swap</span><span class="tag">extensions</span></div>
+            </a>
+            
+            <a href="/exercises/09-extensions/index.html" class="exercise-card">
+                <h2>8. Estensioni - JSON Enc</h2>
+                <p>Invia dati come JSON invece di form-urlencoded usando l'estensione json-enc.</p>
+                <span class="difficulty medium">Medio</span>
+                <div class="tags"><span class="tag">json-enc</span><span class="tag">hx-vals</span><span class="tag">extensions</span></div>
+            </a>
+            
+            <a href="/exercises/10-patterns/index.html" class="exercise-card">
+                <h2>9. Pattern Comuni</h2>
+                <p>Click-to-Edit, Infinite Scroll, Active Search e altri pattern real-world.</p>
+                <span class="difficulty hard">Difficile</span>
+                <div class="tags"><span class="tag">patterns</span><span class="tag">click-to-edit</span></div>
+            </a>
+        </div>
+        
+        <div class="progress">
+            <h3>Progresso</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+            <p style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;">
+                <span id="completed">0</span> / 9 esercizi completati
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Check localStorage for completed exercises
+        const completed = JSON.parse(localStorage.getItem('htmx-completed') || '[]');
+        document.getElementById('completed').textContent = completed.length;
+        document.getElementById('progress-fill').style.width = (completed.length / 9 * 100) + '%';
+        
+        // Mark completed exercises
+        completed.forEach(id => {
+            const card = document.querySelector(`a[href="/exercises/${id}/index.html"]`);
+            if (card) {
+                card.style.borderLeft = '4px solid #2e7d32';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<div class="exercise">
+    <div class="exercise-header">
+        <h2>1. Hello htmx</h2>
+        <span class="difficulty easy">easy</span>
+    </div>
+    
+    <div class="instructions">
+        <h3>Obiettivo</h3>
+        <p>Impara le basi di htmx: fare una richiesta GET e sostituire il contenuto di un elemento.</p>
+        <ol>
+            <li>Aggiungi un pulsante che al click fa una richiesta GET a <code>/api/hello</code></li>
+            <li>La risposta deve sostituire il contenuto del <code><div id="output"></code></li>
+            <li>Usa <code>hx-get</code> e <code>hx-target</code></li>
+        </ol>
+    </div>
+    
+    <div class="workspace" id="workspace" contenteditable="true">
+        <div id="output">Clicca il pulsante qui sotto...</div>
+        <br>
+        <!-- Il tuo codice qui -->
+    </div>
+    
+    <div class="controls">
+        <button class="btn btn-primary" id="run-tests">Esegui Test</button>
+        <button class="btn btn-secondary" id="reset-exercise">Reset</button>
+        <button class="btn btn-secondary" id="show-solution">Mostra Soluzione</button>
+    </div>
+    
+    <div class="results" id="test-results"></div>
+    
+    <div class="solution" id="solution"></div>
+</div>
+
+<script>
+    // Mock API endpoint per i test
+    window.mockAPI = {
+        '/api/hello': { method: 'GET', response: '<strong>Hello htmx!</strong>' }
+    };
+</script>

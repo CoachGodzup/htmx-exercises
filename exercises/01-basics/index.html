@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 1 - Basi di htmx</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <style>
+        body { font-family: system-ui; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        .exercise { border: 1px solid #ddd; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; }
+        .exercise h2 { margin-top: 0; color: #333; }
+        .test-area { background: #f5f5f5; border-radius: 4px; padding: 1rem; margin: 1rem 0; }
+        button { background: #0066cc; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0052a3; }
+        #output { padding: 1rem; background: #f0f7ff; border: 1px solid #0066cc; border-radius: 4px; min-height: 2rem; }
+        .test-results { margin-top: 1rem; padding: 1rem; border-radius: 4px; }
+        .test-results.pass { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .test-results.fail { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .test-item { margin: 0.5rem 0; padding: 0.5rem; border-radius: 4px; }
+        .test-item.pass { background: #c3e6cb; }
+        .test-item.fail { background: #f5c6cb; }
+        code { background: #f4f4f4; padding: 0.2rem 0.4rem; border-radius: 3px; }
+        .hint { background: #fff3cd; border: 1px solid #ffeaa7; padding: 1rem; border-radius: 4px; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <h1>Esercizio 1: Basi di htmx</h1>
+    
+    <div class="exercise">
+        <h2>Obiettivo</h2>
+        <p>Crea un pulsante che, cliccato, fa una richiesta GET a <code>/api/hello</code> e inserisce la risposta in un div con id <code>output</code>.</p>
+        
+        <h3>Attributi da usare:</h3>
+        <ul>
+            <li><code>hx-get="/api/hello"</code> - fa una richiesta GET</li>
+            <li><code>hx-target="#output"</code> - dove mettere la risposta</li>
+        </ul>
+    </div>
+
+    <div class="exercise">
+        <h2>Il tuo codice</h2>
+        <div class="test-area">
+            <p>Scrivi il tuo HTML qui sotto:</p>
+            <textarea id="user-code" rows="8" style="width:100%; font-family:monospace; padding:0.5rem;">
+<button hx-get="/api/hello" hx-target="#output">Saluta</button>
+<div id="output"></div>
+            </textarea>
+        </div>
+        <button onclick="runTests()">Esegui Test</button>
+        
+        <div class="exercise">
+            <h2>Anteprima Live</h2>
+            <div id="preview"></div>
+        </div>
+        
+        <div id="results"></div>
+    </div>
+
+    <div class="hint">
+        <strong>💡 Suggerimento:</strong> L'attributo <code>hx-get</code> fa una richiesta GET all'URL specificato. 
+        L'attributo <code>hx-target</code> dice dove mettere la risposta (usa un selettore CSS come <code>#output</code>).
+    </div>
+
+    <script>
+        const API_URL = '/api/hello';
+        
+        async function runTests() {
+            const userCode = document.getElementById('user-code').value;
+            document.getElementById('preview').innerHTML = userCode;
+            
+            try {
+                const res = await fetch('/api/test', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ exercise: '01-basics', html: userCode })
+                });
+                const result = await res.json();
+                renderResults(result);
+            } catch (e) {
+                document.getElementById('results').innerHTML = '<div class="test-results fail">Errore: ' + e.message + '</div>';
+            }
+        }
+        
+        function renderResults(result) {
+            const div = document.getElementById('results');
+            div.className = 'test-results ' + (result.passed ? 'pass' : 'fail');
+            div.innerHTML = '<h3>' + (result.passed ? '✅ Tutti i test passati!' : '❌ Alcuni test falliti') + '</h3>' +
+                result.tests.map(t => '<div class="test-item ' + (t.passed ? 'pass' : 'fail') + '">' +
+                    (t.passed ? '✅' : '❌') + ' ' + t.name + ': ' + t.message + '</div>').join('');
+        }
+        
+        document.getElementById('user-code').addEventListener('input', (e) => {
+            document.getElementById('preview').innerHTML = e.target.value;
+        });
+        document.getElementById('preview').innerHTML = document.getElementById('user-code').value;
+    </script>
+</body>
+</html>
