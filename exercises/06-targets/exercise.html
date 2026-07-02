@@ -1,0 +1,39 @@
+<div class="exercise">
+  <div class="exercise-header">
+    <h2>6. Advanced Targets</h2>
+    <span class="difficulty medium">medium</span>
+  </div>
+
+  <div class="instructions">
+    <h3>Objective</h3>
+    <p>
+      Use advanced CSS selectors with hx-target: <code>closest</code>, <code>next</code>,
+      <code>previous</code>, <code>find</code>.
+    </p>
+    <ol>
+      <li>Create a button that makes a GET request to <code>/api/target</code></li>
+      <li>
+        Use <code>hx-target</code> with an advanced selector like <code>closest .container</code>,
+        <code>next</code>, or <code>#target-result</code>
+      </li>
+      <li>The target element <code>#target-result</code> is inside the container</li>
+    </ol>
+  </div>
+
+  <div class="workspace" id="workspace" contenteditable="true">
+    <div class="container">
+      <button hx-get="/api/target" hx-target="#target-result">Load into target</button>
+      <div id="target-result"></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-primary" id="run-tests">Run Tests</button>
+    <button class="btn btn-secondary" id="reset-exercise">Reset</button>
+    <button class="btn btn-secondary" id="show-solution">Show Solution</button>
+  </div>
+
+  <div class="results" id="test-results"></div>
+
+  <div class="solution" id="solution"></div>
+</div>

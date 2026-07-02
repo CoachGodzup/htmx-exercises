@@ -1,0 +1,36 @@
+<div class="exercise">
+  <div class="exercise-header">
+    <h2>8. WebSockets</h2>
+    <span class="difficulty hard">hard</span>
+  </div>
+
+  <div class="instructions">
+    <h3>Objective</h3>
+    <p>Use the WebSocket extension for bidirectional real-time communication.</p>
+    <ol>
+      <li>Create a div with <code>ws-connect="ws://localhost:3000/api/ws"</code></li>
+      <li>Add a form with <code>ws-send</code> to send messages</li>
+      <li>Use <code>hx-target="#chat"</code> and <code>hx-swap="beforeend"</code> on the form</li>
+    </ol>
+  </div>
+
+  <div class="workspace" id="workspace" contenteditable="true">
+    <div ws-connect="ws://localhost:3000/api/ws" id="chat">
+      <div>Messages:</div>
+    </div>
+    <form ws-send hx-target="#chat" hx-swap="beforeend">
+      <input name="msg" placeholder="Message..." required />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-primary" id="run-tests">Run Tests</button>
+    <button class="btn btn-secondary" id="reset-exercise">Reset</button>
+    <button class="btn btn-secondary" id="show-solution">Show Solution</button>
+  </div>
+
+  <div class="results" id="test-results"></div>
+
+  <div class="solution" id="solution"></div>
+</div>

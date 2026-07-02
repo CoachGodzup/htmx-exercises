@@ -1,0 +1,7 @@
+<div ws-connect="ws://localhost:3000/api/ws" id="chat">
+  <div>Messages:</div>
+</div>
+<form ws-send hx-target="#chat" hx-swap="beforeend">
+  <input name="msg" placeholder="Message..." required />
+  <button type="submit">Send</button>
+</form>

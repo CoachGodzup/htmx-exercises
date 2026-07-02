@@ -1,0 +1,39 @@
+<div class="exercise">
+  <div class="exercise-header">
+    <h2>10. Common Patterns</h2>
+    <span class="difficulty hard">hard</span>
+  </div>
+
+  <div class="instructions">
+    <h3>Objective: Click-to-Edit</h3>
+    <p>Create an element that turns into an input on click, and saves on Enter or blur.</p>
+    <ol>
+      <li>Use <code>hx-put="/api/pattern"</code> to send the update</li>
+      <li>Use multiple triggers: <code>hx-trigger="click, keyup[key=='Enter'], blur"</code></li>
+      <li>Use <code>hx-swap="outerHTML"</code> to replace the element</li>
+      <li>Add <code>hx-vals='{"item": "Click to edit"}'</code></li>
+    </ol>
+  </div>
+
+  <div class="workspace" id="workspace" contenteditable="true">
+    <div
+      hx-put="/api/pattern"
+      hx-trigger="click, keyup[key=='Enter'], blur"
+      hx-swap="outerHTML"
+      hx-vals='{"item": "Click to edit"}'
+      class="click-to-edit"
+    >
+      Click to edit
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-primary" id="run-tests">Run Tests</button>
+    <button class="btn btn-secondary" id="reset-exercise">Reset</button>
+    <button class="btn btn-secondary" id="show-solution">Show Solution</button>
+  </div>
+
+  <div class="results" id="test-results"></div>
+
+  <div class="solution" id="solution"></div>
+</div>

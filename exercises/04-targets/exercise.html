@@ -1,23 +1,24 @@
 <div class="exercise">
   <div class="exercise-header">
-    <h2>1. Hello htmx</h2>
-    <span class="difficulty easy">easy</span>
+    <h2>4. Target Selection</h2>
+    <span class="difficulty medium">medium</span>
   </div>
 
   <div class="instructions">
     <h3>Objective</h3>
-    <p>Learn the basics of htmx: make a GET request and replace an element's content.</p>
+    <p>
+      Use CSS selectors with hx-target to put the response in a different element than the one
+      making the request.
+    </p>
     <ol>
-      <li>Add a button that makes a GET request to <code>/api/hello</code> on click</li>
-      <li>The response must replace the content of <code>&lt;div id="output"&gt;</code></li>
-      <li>Use <code>hx-get</code> and <code>hx-target</code></li>
+      <li>Create a button that makes a GET request to <code>/api/target</code></li>
+      <li>Make the response go to <code>#target-output</code> using <code>hx-target</code></li>
     </ol>
   </div>
 
   <div class="workspace" id="workspace" contenteditable="true">
-    <div id="output">Click the button below...</div>
-    <br />
-    <!-- Your code here -->
+    <button hx-get="/api/target" hx-target="#target-output">Load into target</button>
+    <div id="target-output"></div>
   </div>
 
   <div class="controls">

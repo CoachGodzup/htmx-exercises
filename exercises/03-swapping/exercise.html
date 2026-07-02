@@ -1,23 +1,21 @@
 <div class="exercise">
   <div class="exercise-header">
-    <h2>1. Hello htmx</h2>
+    <h2>3. Swap Strategies</h2>
     <span class="difficulty easy">easy</span>
   </div>
 
   <div class="instructions">
     <h3>Objective</h3>
-    <p>Learn the basics of htmx: make a GET request and replace an element's content.</p>
+    <p>Change the swap strategy to replace the entire element instead of just its inner content.</p>
     <ol>
-      <li>Add a button that makes a GET request to <code>/api/hello</code> on click</li>
-      <li>The response must replace the content of <code>&lt;div id="output"&gt;</code></li>
-      <li>Use <code>hx-get</code> and <code>hx-target</code></li>
+      <li>Make the div below replace itself entirely when clicked</li>
+      <li>Use <code>hx-get="/api/swap"</code> and <code>hx-swap="outerHTML"</code></li>
+      <li>Add <code>hx-trigger="click"</code> so clicking triggers the request</li>
     </ol>
   </div>
 
   <div class="workspace" id="workspace" contenteditable="true">
-    <div id="output">Click the button below...</div>
-    <br />
-    <!-- Your code here -->
+    <div id="target" hx-get="/api/swap" hx-trigger="click">Click to replace this div</div>
   </div>
 
   <div class="controls">

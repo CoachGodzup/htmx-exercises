@@ -1,0 +1,74 @@
+{
+  "exercises": [
+    {
+      "id": "01-basics",
+      "title": "Hello htmx",
+      "description": "Learn the basics: hx-get, hx-target, making GET requests and displaying responses.",
+      "difficulty": "easy",
+      "tags": ["hx-get", "hx-target"]
+    },
+    {
+      "id": "02-triggers",
+      "title": "Trigger Events",
+      "description": "Change the event that triggers the request: click, dblclick, mouseenter, keyup, etc.",
+      "difficulty": "easy",
+      "tags": ["hx-trigger"]
+    },
+    {
+      "id": "03-swapping",
+      "title": "Swap Strategies",
+      "description": "Control how the response is inserted: innerHTML, outerHTML, beforeend, afterbegin, etc.",
+      "difficulty": "easy",
+      "tags": ["hx-swap"]
+    },
+    {
+      "id": "04-targets",
+      "title": "Target Selection",
+      "description": "Use CSS selectors to target specific elements: closest, next, previous, ID, classes.",
+      "difficulty": "medium",
+      "tags": ["hx-target", "CSS selectors"]
+    },
+    {
+      "id": "05-forms",
+      "title": "hx-vals & JSON",
+      "description": "Send additional parameters with hx-vals and use json-enc extension for JSON encoding.",
+      "difficulty": "medium",
+      "tags": ["hx-vals", "hx-post", "json-enc"]
+    },
+    {
+      "id": "06-targets",
+      "title": "Advanced Targets",
+      "description": "Use advanced CSS selectors with hx-target: closest, next, previous, find.",
+      "difficulty": "medium",
+      "tags": ["hx-target", "CSS selectors", "advanced"]
+    },
+    {
+      "id": "07-sse",
+      "title": "Server-Sent Events",
+      "description": "Real-time one-way updates from the server using the SSE extension.",
+      "difficulty": "hard",
+      "tags": ["sse-connect", "sse-swap", "extensions"]
+    },
+    {
+      "id": "08-ws",
+      "title": "WebSockets",
+      "description": "Bidirectional real-time communication with the WebSocket extension.",
+      "difficulty": "hard",
+      "tags": ["ws-connect", "ws-send", "extensions"]
+    },
+    {
+      "id": "09-extensions",
+      "title": "JSON Encoding",
+      "description": "Send data as JSON instead of form-urlencoded using the json-enc extension.",
+      "difficulty": "medium",
+      "tags": ["json-enc", "hx-vals", "extensions"]
+    },
+    {
+      "id": "10-patterns",
+      "title": "Common Patterns",
+      "description": "Click-to-Edit, Infinite Scroll, Active Search and other real-world patterns.",
+      "difficulty": "hard",
+      "tags": ["patterns", "click-to-edit"]
+    }
+  ]
+}

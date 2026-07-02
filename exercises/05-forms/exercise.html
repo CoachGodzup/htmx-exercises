@@ -1,0 +1,35 @@
+<div class="exercise">
+  <div class="exercise-header">
+    <h2>5. hx-vals &amp; JSON</h2>
+    <span class="difficulty medium">medium</span>
+  </div>
+
+  <div class="instructions">
+    <h3>Objective</h3>
+    <p>
+      Use <code>hx-vals</code> to send additional parameters and the <code>json-enc</code> extension
+      to send as JSON.
+    </p>
+    <ol>
+      <li>Create a button with <code>hx-ext="json-enc"</code> to enable JSON encoding</li>
+      <li>Use <code>hx-post="/api/val"</code> to send a POST request</li>
+      <li>Add <code>hx-vals='{"value": "test"}'</code> to send extra parameters</li>
+      <li>Set <code>hx-target="#output"</code> to display the response</li>
+    </ol>
+  </div>
+
+  <div class="workspace" id="workspace" contenteditable="true">
+    <button hx-ext="json-enc" hx-post="/api/val" hx-target="#output">Send JSON</button>
+    <div id="output"></div>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-primary" id="run-tests">Run Tests</button>
+    <button class="btn btn-secondary" id="reset-exercise">Reset</button>
+    <button class="btn btn-secondary" id="show-solution">Show Solution</button>
+  </div>
+
+  <div class="results" id="test-results"></div>
+
+  <div class="solution" id="solution"></div>
+</div>
