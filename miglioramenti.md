@@ -1,37 +1,51 @@
-# Miglioramenti Progetto htmx-exercises
+# htmx-exercises Changelog & Roadmap
 
-## Difetti segnalati
+All improvements, fixes, and changes tracked with a unique ID per item.
 
-id,categoria,difetto,impatto,priorita
-U01,UI/UX,La soluzione e' pre-compilata nel textarea in tutti gli esercizi (02-10) e visibile subito,Lo studente non puo' esercitarsi davvero,alta
-U02,Architettura,Il CSS e' duplicato inline in ogni file HTML,Modificare lo stile richiede aggiornare 10+ file,alta
-U03,Architettura,Struttura esercizi non standard: 01 ha 3 file (index/exercise/solution) gli altri solo index,Confusione manutentiva,alta
+## Legend
 
-## Altri miglioramenti proposti
+| Status | Meaning |
+| --- | --- |
+| completed | Implemented and merged |
+| pending | Planned but not yet started |
 
-id,categoria,difetto,impatto,priorita
-M01,Architettura,Coesistono due architetture: SPA (app.js+exercise.html) e pagine standalone (index.html),Doppia manutenzione e incoerenza,alta
-M02,Bug,Esercizio 06 (targets) ha test copia-incollati da WebSocket (ws-connect/ws-send) invece di test su hx-target,Test errati per l'esercizio,alta
-M03,Infrastruttura,Esercizio 08 (ws) punta a ws://localhost:3000/api/ws ma server.js non implementa WebSocket,Esercizio non funzionante,alta
-M04,UI/UX,La homepage elenca 9 esercizi ma la numerazione non corrisponde alle directory (06-targets non elencato, 08-ws elencato come 6),Navigazione confusa,media
-M05,Architettura,public/css/style.css e public/js/app.js esistono ma non sono mai referenziati dagli index.html,Risorse inutilizzate,media
-M06,Infrastruttura,`npm test` restituisce un placeholder, nessun test automatizzato reale,Impossibile fare CI/CD,media
-M07,Architettura,Assenza di linting/formatting (ESLint, Prettier),Codice non uniforme,media
-M08,Infrastruttura,La versione di htmx (1.9.10) e' hardcoded in ogni file,Aggiornare richiede modifiche multiple,media
-M09,UI/UX,Il progresso e' salvato in localStorage ma non e' sincronizzato tra homepage ed esercizi,Esperienza utente frammentata,media
-M10,Affidabilita,Dipendenze CDN senza fallback,Se CDN e' giu' gli esercizi non funzionano,media
-M11,UI/UX,textarea vs contenteditable: esercizio 01 SPA usa contenteditable, gli altri usano textarea,Inconsistenza UX,media
-M12,UI/UX,Anteprima aggiornata ad ogni keystroke senza debounce,Performance percepita,media
-M13,Accessibilita,Nessun ARIA label o supporto tastiera,Esclusione utenti con disabilita',bassa
-M14,UI/UX,Nessun link "esercizio successivo" al completamento,Navigazione scomoda,bassa
-M15,Affidabilita,Preview inserisce HTML utente direttamente nel DOM senza sanitizzazione,Rischio XSS e rottura layout,bassa
-M16,Architettura,Test basati su regex su HTML grezzo sono fragili,Falsi positivi/negativi,bassa
-M17,Infrastruttura,Assenza di header CSP (Content-Security-Policy),Rischio sicurezza,bassa
-M18,UI/UX,Il feedback del test e' binario (pass/fail) senza spiegazione dell'errore,Apprendimento limitato,media
-M19,Architettura,Metadati esercizi duplicati in index.html, app.js, server.js,Mantenimento difficile,alta
-M20,Infrastruttura,Nessun supporto i18n, tutto in italiano,Non riutilizzabile per altre lingue,bassa
-M21,UI/UX,La soluzione mostra solo il codice senza spiegazione,Opportunita' di apprendimento persa,bassa
-M22,Architettura,Nessuna configurazione centralizzata (es. JSON esterno con metadati esercizi),Scarsa manutenibilita',alta
-M23,UI/UX,Esercizio 05 si intitola "hx-vals & JSON" ma in homepage e' "Form Handling",Inconsistenza titoli,media
-M24,UI/UX,Nessuna scorciatoia da tastiera per azioni frequenti (test, reset),Efficienza ridotta,bassa
-M25,Bug,Il CSS di 03-swapping:index.html riga 13 contiene `border: white;` ripetuto prima di `border: none;`,Errore CSS innocuo,bassa
+## Improvements
+
+### Completed
+
+| ID | Category | Description | Status |
+| --- | --- | --- | --- |
+| U01 | ui/ux | Hide solution: start with empty textarea, add "Show Solution" button | completed |
+| U02 | architecture | Extract inline CSS to shared external file | completed |
+| U03 | architecture | Standardize exercise structure (decide SPA vs standalone) | completed |
+| M01 | architecture | Eliminate SPA/standalone duplication: keep only SPA (app.js + exercise.html), remove standalone index.html | completed |
+| M02 | bug | Fix copied tests in server.js for exercise 06-targets (were ws-connect/ws-send instead of hx-target tests) | completed |
+| M03 | bug | Implement WebSocket endpoint in server.js for exercise 08-ws | completed |
+| M04 | ui/ux | Align homepage, filesystem and test numbering consistently | completed |
+| M05 | architecture | Remove or reuse public/css/style.css and public/js/app.js | completed |
+| M06 | infrastructure | Implement real automated tests (vitest + happy-dom) | completed |
+| M07 | infrastructure | Add linting and formatting (ESLint + Prettier + Stylelint) + pre-commit hook | completed |
+| M11 | ui/ux | Standardize editor (decide between textarea or contenteditable) | completed |
+| M19 | architecture | Centralize exercise metadata in external JSON | completed |
+| M22 | architecture | Introduce centralized configuration file | completed |
+| M23 | ui/ux | Align exercise titles between homepage and inner page | completed |
+| M25 | bug | Fix CSS typo in 03-swapping/index.html (duplicate `border: white` before `border: none`) | completed |
+| M26 | architecture | Translate everything to English (code, UI, exercise texts, homepage) | completed |
+
+### Pending
+
+| ID | Category | Description | Status |
+| --- | --- | --- | --- |
+| M08 | infrastructure | Centralize htmx version in a single location (CDN) | pending |
+| M09 | ui/ux | Sync progress between homepage and individual exercises | pending |
+| M10 | reliability | Add local CDN fallback for htmx | pending |
+| M12 | ui/ux | Add debounce to live preview | pending |
+| M13 | accessibility | Add ARIA labels and keyboard support | pending |
+| M14 | ui/ux | Add navigation between previous/next exercises | pending |
+| M15 | reliability | Sanitize user HTML before inserting into DOM | pending |
+| M16 | architecture | Replace regex tests with structural HTML validation | pending |
+| M17 | security | Add CSP headers | pending |
+| M18 | ui/ux | Improve test feedback: explain what is missing instead of pass/fail | pending |
+| M20 | architecture | Add i18n support: extract strings into JSON (en.json, it.json), load based on `lang` attribute or `navigator.language`, replace dynamically in DOM | pending |
+| M21 | ui/ux | Add textual explanation to the solution | pending |
+| M24 | ui/ux | Add keyboard shortcuts | pending |
