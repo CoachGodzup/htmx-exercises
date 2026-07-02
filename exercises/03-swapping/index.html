@@ -34,13 +34,10 @@
         <h2>Il tuo codice</h2>
         <div class="test-area">
             <p>Scrivi il tuo HTML qui sotto (usa un div con id="target" che verrà sostituito):</p>
-            <textarea id="user-code" rows="10" style="width:100%; font-family:monospace; padding:0.5rem;">
-<div id="target" hx-get="/api/swap" hx-trigger="click" hx-swap="outerHTML">
-    Clicca per sostituire questo div
-</div>
-            </textarea>
+            <textarea id="user-code" rows="10" style="width:100%; font-family:monospace; padding:0.5rem;" placeholder="Scrivi qui il tuo HTML..."></textarea>
         </div>
         <button onclick="runTests()">Esegui Test</button>
+        <button onclick="showSolution()" style="background: #28a745; margin-left: 0.5rem;">Mostra Soluzione</button>
         
         <div class="exercise">
             <h2>Anteprima Live</h2>
@@ -85,6 +82,15 @@
             document.getElementById('preview').innerHTML = e.target.value;
         });
         document.getElementById('preview').innerHTML = document.getElementById('user-code').value;
+
+        const SOLUTION = `<div id="target" hx-get="/api/swap" hx-trigger="click" hx-swap="outerHTML">
+    Clicca per sostituire questo div
+</div>`;
+
+        function showSolution() {
+            document.getElementById('user-code').value = SOLUTION.trim();
+            document.getElementById('preview').innerHTML = SOLUTION.trim();
+        }
     </script>
 </body>
 </html>

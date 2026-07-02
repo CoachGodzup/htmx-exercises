@@ -28,14 +28,10 @@
         <h2>Il tuo codice</h2>
         <div class="test-area">
             <p>Scrivi il tuo HTML qui sotto:</p>
-            <textarea id="user-code" rows="10" style="width:100%; font-family:monospace; padding:0.5rem;">
-<button hx-ext="json-enc" hx-post="/api/val" hx-vals='{"value": "test"}' hx-target="#output">
-    Invia JSON
-</button>
-<div id="output"></div>
-            </textarea>
+            <textarea id="user-code" rows="10" style="width:100%; font-family:monospace; padding:0.5rem;" placeholder="Scrivi qui il tuo HTML..."></textarea>
         </div>
         <button onclick="runTests()">Esegui Test</button>
+        <button onclick="showSolution()" style="background: #28a745; margin-left: 0.5rem;">Mostra Soluzione</button>
         
         <div class="exercise">
             <h2>Anteprima Live</h2>
@@ -80,6 +76,16 @@
             document.getElementById('preview').innerHTML = e.target.value;
         });
         document.getElementById('preview').innerHTML = document.getElementById('user-code').value;
+
+        const SOLUTION = `<button hx-ext="json-enc" hx-post="/api/val" hx-vals='{"value": "test"}' hx-target="#output">
+    Invia JSON
+</button>
+<div id="output"></div>`;
+
+        function showSolution() {
+            document.getElementById('user-code').value = SOLUTION.trim();
+            document.getElementById('preview').innerHTML = SOLUTION.trim();
+        }
     </script>
 </body>
 </html>
