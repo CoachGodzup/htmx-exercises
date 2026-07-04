@@ -15,7 +15,8 @@
     "*.css": "stylelint --fix"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "prismjs": "^1.30.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
