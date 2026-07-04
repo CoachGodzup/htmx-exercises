@@ -2,13 +2,6 @@
   <div class="exercise-header">
     <h2>1. Hello htmx</h2>
     <span class="difficulty easy">easy</span>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
   </div>
 
   <div class="instructions">
@@ -21,14 +14,13 @@
     </ol>
   </div>
 
-  <!-- <code class="workspace" id="workspace" contenteditable="true"> -->
-  <pre>
-    <code class="language-html" id="workspace" contenteditable="true">
-        <div id="output">Click the button below...</div>
-        <br />
-        <!-- Your code here -->
-    </code>
-  </pre>
+  <div class="editor-preview-split">
+    <div id="editor-container" class="editor-pane"></div>
+    <div class="preview-pane">
+      <div class="preview-header">Live Preview</div>
+      <iframe id="preview-frame" class="preview-frame"></iframe>
+    </div>
+  </div>
 
   <div class="controls">
     <button class="btn btn-primary" id="run-tests">Run Tests</button>

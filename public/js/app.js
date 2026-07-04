@@ -63,6 +63,45 @@ async function loadExercise(id) {
 }
 
 function initExercise(id) {
+  const editorContainer = document.getElementById('editor-container');
+  let editor = null;
+  if (editorContainer && typeof CodeMirror !== 'undefined') {
+    editor = CodeMirror(editorContainer, {
+      value: '<div id="output">Click the button below...</div>\n<br />\n<!-- Your code here -->',
+      mode: 'htmlmixed',
+      theme: 'material-ocean',
+      lineNumbers: true,
+      indentUnit: 2,
+      tabSize: 2,
+      lineWrapping: true,
+    });
+    editorContainer._editor = editor;
+
+    let previewTimer = null;
+    const updatePreview = () => {
+      clearTimeout(previewTimer);
+      previewTimer = setTimeout(() => {
+        const frame = document.getElementById('preview-frame');
+        if (frame) {
+          const doc = frame.contentDocument || frame.contentWindow.document;
+          doc.open();
+          doc.write(
+            [
+              '<!DOCTYPE html><html><head><meta charset="UTF-8" />',
+              '<script src="https://unpkg.com/htmx.org@1.9.10"></scr',
+              'ipt></head><body>',
+              editor.getValue(),
+              '</body></html>',
+            ].join('')
+          );
+          doc.close();
+        }
+      }, 300);
+    };
+    editor.on('change', updatePreview);
+    updatePreview();
+  }
+
   const runBtn = document.getElementById('run-tests');
   const resetBtn = document.getElementById('reset-exercise');
   const showSolutionBtn = document.getElementById('show-solution');
@@ -72,6 +111,18 @@ function initExercise(id) {
   showSolutionBtn?.addEventListener('click', () => showSolution(id));
 }
 
+function getWorkspaceContent() {
+  const editorContainer = document.getElementById('editor-container');
+  if (editorContainer && editorContainer._editor) {
+    return editorContainer._editor.getValue();
+  }
+  const el = document.getElementById('workspace');
+  if (el) {
+    return el.innerHTML;
+  }
+  return '';
+}
+
 async function runTests(id) {
   const resultsDiv = document.getElementById('test-results');
   resultsDiv.style.display = 'block';
@@ -79,8 +130,7 @@ async function runTests(id) {
   resultsDiv.innerHTML = '<h4>Running tests...</h4>';
 
   try {
-    const workspace = document.getElementById('workspace');
-    const userHTML = workspace.innerHTML;
+    const userHTML = getWorkspaceContent();
 
     const res = await fetch(`/api/test/${id}`, {
       method: 'POST',

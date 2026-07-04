@@ -8,6 +8,7 @@ export default [
       globals: {
         ...globals.node,
         ...globals.browser,
+        CodeMirror: 'readonly',
       },
     },
     rules: {

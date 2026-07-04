@@ -132,17 +132,54 @@ main {
   line-height: 1.6;
 }
 
-pre > code {
-  display: block;
-  border: 2px dashed #ddd;
-  border-radius: 8px;
-  padding: 1.5rem;
-  background: #fff;
-  width: 100%;
-  min-height: 6em;
+.editor-preview-split {
+  display: flex;
+  gap: 1rem;
+  min-height: 300px;
 }
 
-pre > code:focus-within {
+.editor-pane {
+  flex: 1;
+  min-width: 0;
+}
+
+.preview-pane {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.preview-header {
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.75rem;
+  background: #f0f0f0;
+  color: #666;
+  border-bottom: 1px solid #ddd;
+}
+
+.preview-frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #fff;
+}
+
+#editor-container .CodeMirror {
+  height: 100%;
+  min-height: 280px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+#editor-container .CodeMirror:focus-within {
   border-color: #1a73e8;
 }
 
