@@ -11,6 +11,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+// CORS per il live preview sandboxato (iframe con origine unica)
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') return res.sendStatus(204);
+  next();
+});
+
 // ========== MOCK API ENDPOINTS ==========
 
 app.get('/api/hello', (req, res) => res.send('<strong>Hello htmx!</strong>'));
