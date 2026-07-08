@@ -73,13 +73,11 @@ main {
 
 /* Exercise styles */
 .exercise {
-  max-width: 800px;
   margin: 0 auto;
 }
 
 .exercise-header {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
   border-bottom: 1px solid #eee;
 }
 
@@ -154,6 +152,9 @@ main {
 }
 
 .preview-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.75rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -162,6 +163,13 @@ main {
   background: #f0f0f0;
   color: #666;
   border-bottom: 1px solid #ddd;
+}
+
+.preview-header .btn {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 .preview-frame {

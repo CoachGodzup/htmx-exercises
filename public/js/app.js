@@ -81,28 +81,34 @@ function initExercise(id) {
     });
     editorContainer._editor = editor;
 
-    let previewTimer = null;
     const updatePreview = () => {
-      clearTimeout(previewTimer);
-      previewTimer = setTimeout(() => {
-        const frame = document.getElementById('preview-frame');
-        if (frame) {
-          const doc = frame.contentDocument || frame.contentWindow.document;
-          doc.open();
-          doc.write(
-            [
-              '<!DOCTYPE html><html><head><meta charset="UTF-8" />',
-              '<script src="https://unpkg.com/htmx.org@1.9.10"></scr',
-              'ipt></head><body>',
-              editor.getValue(),
-              '</body></html>',
-            ].join('')
-          );
-          doc.close();
-        }
-      }, 300);
+      const frame = document.getElementById('preview-frame');
+      if (frame) {
+        const doc = frame.contentDocument || frame.contentWindow.document;
+        doc.open();
+        doc.write(
+          [
+            '<!DOCTYPE html><html><head><meta charset="UTF-8" />',
+            '<script src="https://unpkg.com/htmx.org@1.9.10"></scr',
+            'ipt></head><body>',
+            editor.getValue(),
+            '</body></html>',
+          ].join('')
+        );
+        doc.close();
+      }
     };
-    editor.on('change', updatePreview);
+
+    const previewHeader = document.querySelector('.preview-header');
+    if (previewHeader) {
+      const refreshBtn = document.createElement('button');
+      refreshBtn.textContent = 'Refresh Preview';
+      refreshBtn.className = 'btn btn-secondary';
+      refreshBtn.style.marginLeft = 'auto';
+      refreshBtn.addEventListener('click', updatePreview);
+      previewHeader.appendChild(refreshBtn);
+    }
+
     updatePreview();
   }
 
