@@ -15,7 +15,15 @@
     </ol>
   </div>
 
-  <code class="workspace" id="workspace" contenteditable="true">
+  <div class="editor-preview-split">
+    <div id="editor-container" class="editor-pane"></div>
+    <div class="preview-pane">
+      <div class="preview-header">Live Preview</div>
+      <iframe id="preview-frame" class="preview-frame" sandbox="allow-scripts"></iframe>
+    </div>
+  </div>
+
+  <script type="text/plain" id="initial-code" hidden>
     <div
       hx-put="/api/pattern"
       hx-trigger="click, keyup[key=='Enter'], blur"
@@ -25,7 +33,7 @@
     >
       Click to edit
     </div>
-  </code>
+  </script>
 
   <div class="controls">
     <button class="btn btn-primary" id="run-tests">Run Tests</button>

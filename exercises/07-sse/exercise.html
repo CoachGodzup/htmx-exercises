@@ -14,11 +14,19 @@
     </ol>
   </div>
 
-  <code class="workspace" id="workspace" contenteditable="true">
+  <div class="editor-preview-split">
+    <div id="editor-container" class="editor-pane"></div>
+    <div class="preview-pane">
+      <div class="preview-header">Live Preview</div>
+      <iframe id="preview-frame" class="preview-frame" sandbox="allow-scripts"></iframe>
+    </div>
+  </div>
+
+  <script type="text/plain" id="initial-code" hidden>
     <div hx-ext="sse" sse-connect="/api/sse" sse-swap="message" id="output">
       Waiting for messages...
     </div>
-  </code>
+  </script>
 
   <div class="controls">
     <button class="btn btn-primary" id="run-tests">Run Tests</button>

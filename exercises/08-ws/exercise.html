@@ -14,7 +14,15 @@
     </ol>
   </div>
 
-  <code class="workspace" id="workspace" contenteditable="true">
+  <div class="editor-preview-split">
+    <div id="editor-container" class="editor-pane"></div>
+    <div class="preview-pane">
+      <div class="preview-header">Live Preview</div>
+      <iframe id="preview-frame" class="preview-frame" sandbox="allow-scripts"></iframe>
+    </div>
+  </div>
+
+  <script type="text/plain" id="initial-code" hidden>
     <div ws-connect="ws://localhost:3000/api/ws" id="chat">
       <div>Messages:</div>
     </div>
@@ -22,7 +30,7 @@
       <input name="msg" placeholder="Message..." required />
       <button type="submit">Send</button>
     </form>
-  </code>
+  </script>
 
   <div class="controls">
     <button class="btn btn-primary" id="run-tests">Run Tests</button>

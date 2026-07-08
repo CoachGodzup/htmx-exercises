@@ -66,8 +66,12 @@ function initExercise(id) {
   const editorContainer = document.getElementById('editor-container');
   let editor = null;
   if (editorContainer && typeof CodeMirror !== 'undefined') {
+    const initialCodeEl = document.getElementById('initial-code');
+    const initialValue = initialCodeEl
+      ? initialCodeEl.textContent.trim()
+      : '<!-- Your code here -->';
     editor = CodeMirror(editorContainer, {
-      value: '<div id="output">Click the button below...</div>\n<br />\n<!-- Your code here -->',
+      value: initialValue,
       mode: 'htmlmixed',
       theme: 'material-ocean',
       lineNumbers: true,

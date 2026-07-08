@@ -16,10 +16,18 @@
     </ol>
   </div>
 
-  <code class="workspace" id="workspace" contenteditable="true">
+  <div class="editor-preview-split">
+    <div id="editor-container" class="editor-pane"></div>
+    <div class="preview-pane">
+      <div class="preview-header">Live Preview</div>
+      <iframe id="preview-frame" class="preview-frame" sandbox="allow-scripts"></iframe>
+    </div>
+  </div>
+
+  <script type="text/plain" id="initial-code" hidden>
     <button hx-get="/api/target" hx-target="#target-output">Load into target</button>
     <div id="target-output"></div>
-  </code>
+  </script>
 
   <div class="controls">
     <button class="btn btn-primary" id="run-tests">Run Tests</button>
