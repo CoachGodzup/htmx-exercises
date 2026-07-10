@@ -242,8 +242,8 @@ function runTests(exercise, userHTML) {
       tests.push({
         name: 'hx-trigger blur',
         passed:
-          /hx-trigger\s*=\s*["'][^"']*blur/.test(userHTML) ||
-          /hx-trigger\s*=\s*["'][^"']*,\s*blur/.test(userHTML),
+          /hx-trigger\s*=\s*"[^"]*blur/.test(userHTML) ||
+          /hx-trigger\s*=\s*'[^']*blur/.test(userHTML),
         message: 'Must trigger on blur',
       });
       tests.push({
@@ -280,6 +280,10 @@ wss.on('connection', (ws) => {
   ws.send('<div class="message">Connected to WebSocket server</div>');
 });
 
-// ========== START SERVER ==========
+// ========== START SERVER (solo se eseguito direttamente, non nei test) ==========
 
-server.listen(3000, () => console.log('Server running on http://localhost:3000'));
+if (require.main === module) {
+  server.listen(3000, () => console.log('Server running on http://localhost:3000'));
+}
+
+module.exports = { app, runTests };
