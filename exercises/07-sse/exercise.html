@@ -11,6 +11,14 @@
       <li>Create a div with <code>hx-ext="sse"</code> to enable the SSE extension</li>
       <li>Add <code>sse-connect="/api/sse"</code> to connect to the server</li>
       <li>Use <code>sse-swap="message"</code> to listen for message events</li>
+      <li>
+        Suggerimento: <code>hx-ext="sse"</code> attiva l'estensione SSE, poi
+        <code>sse-connect="/api/sse"</code> apre la connessione
+      </li>
+      <li>
+        Suggerimento: <code>sse-swap="message"</code> dice a htmx a quale nome di evento ascoltare
+        nello stream
+      </li>
     </ol>
   </div>
 
@@ -23,9 +31,7 @@
   </div>
 
   <script type="text/plain" id="initial-code" hidden>
-    <div hx-ext="sse" sse-connect="/api/sse" sse-swap="message" id="output">
-      Waiting for messages...
-    </div>
+    <div id="output">Waiting for messages...</div>
   </script>
 
   <div class="controls">

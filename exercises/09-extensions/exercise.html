@@ -11,6 +11,13 @@
       <li>Create a button with <code>hx-ext="json-enc"</code> to enable JSON encoding</li>
       <li>Use <code>hx-post="/api/val"</code> to send data</li>
       <li>Add <code>hx-vals='{"value": "test"}'</code> with a JSON object</li>
+      <li>
+        Suggerimento: <code>hx-ext="json-enc"</code> abilita l'estensione per la codifica JSON
+      </li>
+      <li>
+        Suggerimento: Usa <code>hx-vals='{"value": "test"}'</code> per inviare un oggetto JSON con
+        la richiesta
+      </li>
     </ol>
   </div>
 
@@ -23,9 +30,7 @@
   </div>
 
   <script type="text/plain" id="initial-code" hidden>
-    <button hx-ext="json-enc" hx-post="/api/val" hx-vals='{"value": "test"}' hx-target="#output">
-      Send JSON
-    </button>
+    <button hx-post="/api/val" hx-target="#output">Send JSON</button>
     <div id="output"></div>
   </script>
 

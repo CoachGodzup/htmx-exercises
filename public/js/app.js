@@ -18,6 +18,8 @@ const EXERCISES_DATA = [
       <li>Add a button that makes a GET request to <code>/api/hello</code> on click</li>
       <li>The response must replace the content of <code>&lt;div id="output"&gt;</code></li>
       <li>Use <code>hx-get</code> and <code>hx-target</code></li>
+      <li>Suggerimento: <code>hx-get="/api/hello"</code> dice a htmx quale URL fetchare al click</li>
+      <li>Suggerimento: <code>hx-target="#output"</code> dice a htmx dove inserire la risposta</li>
     </ol>
   </div>
   <div class="editor-preview-split">
@@ -63,6 +65,8 @@ const EXERCISES_DATA = [
       <li>Modify the button so the request fires on <strong>double click</strong> (<code>dblclick</code>)</li>
       <li>Keep <code>hx-get="/api/click"</code> and <code>hx-target="#output"</code></li>
       <li>Use <code>hx-trigger</code> to change the event</li>
+      <li>Suggerimento: <code>hx-trigger</code> sostituisce l'evento predefinito (click) con qualsiasi evento DOM</li>
+      <li>Suggerimento: Il valore <code>dblclick</code> farà scattare la richiesta al doppio click</li>
     </ol>
   </div>
   <div class="editor-preview-split">
@@ -106,6 +110,8 @@ const EXERCISES_DATA = [
       <li>Make the div below replace itself entirely when clicked</li>
       <li>Use <code>hx-get="/api/swap"</code> and <code>hx-swap="outerHTML"</code></li>
       <li>Add <code>hx-trigger="click"</code> so clicking triggers the request</li>
+      <li>Suggerimento: Il valore predefinito di <code>hx-swap</code> è <code>innerHTML</code> (sostituisce il contenuto). Prova <code>outerHTML</code> per sostituire l'elemento stesso.</li>
+      <li>Suggerimento: Con <code>outerHTML</code> l'intero div viene rimpiazzato con la risposta del server</li>
     </ol>
   </div>
   <div class="editor-preview-split">
@@ -148,6 +154,8 @@ const EXERCISES_DATA = [
     <ol>
       <li>Create a button that makes a GET request to <code>/api/target</code></li>
       <li>Make the response go to <code>#target-output</code> using <code>hx-target</code></li>
+      <li>Suggerimento: <code>hx-target="#target-output"</code> fa andare la risposta in un elemento specifico, non nel bottone</li>
+      <li>Suggerimento: Il target ha già <code>id="target-output"</code> — usalo nel selettore CSS</li>
     </ol>
   </div>
   <div class="editor-preview-split">
@@ -158,7 +166,7 @@ const EXERCISES_DATA = [
     </div>
   </div>
   <script type="text/plain" id="initial-code" hidden>
-    <button hx-get="/api/target" hx-target="#target-output">Load into target</button>
+    <button hx-get="/api/target">Load into target</button>
     <div id="target-output"></div>
   </script>
   <div class="controls">
@@ -192,6 +200,8 @@ const EXERCISES_DATA = [
       <li>Use <code>hx-post="/api/val"</code> to send a POST request</li>
       <li>Add <code>hx-vals='{"value": "test"}'</code> to send extra parameters</li>
       <li>Set <code>hx-target="#output"</code> to display the response</li>
+      <li>Suggerimento: <code>hx-ext="json-enc"</code> abilita la codifica JSON per la richiesta POST</li>
+      <li>Suggerimento: Usa <code>hx-vals='{"value": "test"}'</code> per inviare parametri extra come JSON</li>
     </ol>
   </div>
   <div class="editor-preview-split">
@@ -202,7 +212,7 @@ const EXERCISES_DATA = [
     </div>
   </div>
   <script type="text/plain" id="initial-code" hidden>
-    <button hx-ext="json-enc" hx-post="/api/val" hx-target="#output">Send JSON</button>
+    <button hx-post="/api/val" hx-target="#output">Send JSON</button>
     <div id="output"></div>
   </script>
   <div class="controls">
@@ -236,6 +246,8 @@ const EXERCISES_DATA = [
       <li>Create a button that makes a GET request to <code>/api/target</code></li>
       <li>Use <code>hx-target</code> with an advanced selector like <code>closest .container</code>, <code>next</code>, or <code>#target-result</code></li>
       <li>The target element <code>#target-result</code> is inside the container</li>
+      <li>Suggerimento: <code>hx-target="#target-result"</code> indirizza la risposta al div fratello dentro il container</li>
+      <li>Suggerimento: La risposta da <code>/api/target</code> verrà inserita nell'elemento matching il selettore</li>
     </ol>
   </div>
   <div class="editor-preview-split">
@@ -247,7 +259,7 @@ const EXERCISES_DATA = [
   </div>
   <script type="text/plain" id="initial-code" hidden>
     <div class="container">
-      <button hx-get="/api/target" hx-target="#target-result">Load into target</button>
+      <button hx-get="/api/target">Load into target</button>
       <div id="target-result"></div>
     </div>
   </script>
@@ -282,6 +294,8 @@ const EXERCISES_DATA = [
       <li>Create a div with <code>hx-ext="sse"</code> to enable the SSE extension</li>
       <li>Add <code>sse-connect="/api/sse"</code> to connect to the server</li>
       <li>Use <code>sse-swap="message"</code> to listen for message events</li>
+      <li>Suggerimento: <code>hx-ext="sse"</code> attiva l'estensione SSE, poi <code>sse-connect="/api/sse"</code> apre la connessione</li>
+      <li>Suggerimento: <code>sse-swap="message"</code> dice a htmx a quale nome di evento ascoltare nello stream</li>
     </ol>
   </div>
   <div class="editor-preview-split">
@@ -292,9 +306,7 @@ const EXERCISES_DATA = [
     </div>
   </div>
   <script type="text/plain" id="initial-code" hidden>
-    <div hx-ext="sse" sse-connect="/api/sse" sse-swap="message" id="output">
-      Waiting for messages...
-    </div>
+    <div id="output">Waiting for messages...</div>
   </script>
   <div class="controls">
     <button class="btn btn-primary" id="run-tests">Run Tests</button>
@@ -326,6 +338,8 @@ const EXERCISES_DATA = [
       <li>Create a div with <code>ws-connect="ws://localhost:3000/api/ws"</code></li>
       <li>Add a form with <code>ws-send</code> to send messages</li>
       <li>Use <code>hx-target="#chat"</code> and <code>hx-swap="beforeend"</code> on the form</li>
+      <li>Suggerimento: Aggiungi <code>ws-connect="ws://localhost:3000/api/ws"</code> al div chat per aprire una connessione WebSocket</li>
+      <li>Suggerimento: Aggiungi <code>ws-send</code> al form per inviare messaggi via WebSocket quando viene sottomesso</li>
     </ol>
   </div>
   <div class="editor-preview-split">
@@ -336,10 +350,10 @@ const EXERCISES_DATA = [
     </div>
   </div>
   <script type="text/plain" id="initial-code" hidden>
-    <div ws-connect="ws://localhost:3000/api/ws" id="chat">
+    <div id="chat">
       <div>Messages:</div>
     </div>
-    <form ws-send hx-target="#chat" hx-swap="beforeend">
+    <form hx-target="#chat" hx-swap="beforeend">
       <input name="msg" placeholder="Message..." required />
       <button type="submit">Send</button>
     </form>
@@ -378,6 +392,8 @@ const EXERCISES_DATA = [
       <li>Create a button with <code>hx-ext="json-enc"</code> to enable JSON encoding</li>
       <li>Use <code>hx-post="/api/val"</code> to send data</li>
       <li>Add <code>hx-vals='{"value": "test"}'</code> with a JSON object</li>
+      <li>Suggerimento: <code>hx-ext="json-enc"</code> abilita l'estensione per la codifica JSON</li>
+      <li>Suggerimento: Usa <code>hx-vals='{"value": "test"}'</code> per inviare un oggetto JSON con la richiesta</li>
     </ol>
   </div>
   <div class="editor-preview-split">
@@ -388,9 +404,7 @@ const EXERCISES_DATA = [
     </div>
   </div>
   <script type="text/plain" id="initial-code" hidden>
-    <button hx-ext="json-enc" hx-post="/api/val" hx-vals='{"value": "test"}' hx-target="#output">
-      Send JSON
-    </button>
+    <button hx-post="/api/val" hx-target="#output">Send JSON</button>
     <div id="output"></div>
   </script>
   <div class="controls">
@@ -425,6 +439,8 @@ const EXERCISES_DATA = [
       <li>Use multiple triggers: <code>hx-trigger="click, keyup[key=='Enter'], blur"</code></li>
       <li>Use <code>hx-swap="outerHTML"</code> to replace the element</li>
       <li>Add <code>hx-vals='{"item": "Click to edit"}'</code></li>
+      <li>Suggerimento: Usa <code>hx-put="/api/pattern"</code> con trigger multipli: <code>click, keyup[key=='Enter'], blur</code></li>
+      <li>Suggerimento: Aggiungi <code>hx-swap="outerHTML"</code> e <code>hx-vals='{"item": "Click to edit"}'</code> per completare il pattern</li>
     </ol>
   </div>
   <div class="editor-preview-split">
@@ -435,15 +451,7 @@ const EXERCISES_DATA = [
     </div>
   </div>
   <script type="text/plain" id="initial-code" hidden>
-    <div
-      hx-put="/api/pattern"
-      hx-trigger="click, keyup[key=='Enter'], blur"
-      hx-swap="outerHTML"
-      hx-vals='{"item": "Click to edit"}'
-      class="click-to-edit"
-    >
-      Click to edit
-    </div>
+    <div class="click-to-edit">Click to edit</div>
   </script>
   <div class="controls">
     <button class="btn btn-primary" id="run-tests">Run Tests</button>

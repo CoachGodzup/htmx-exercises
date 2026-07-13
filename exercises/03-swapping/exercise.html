@@ -11,6 +11,15 @@
       <li>Make the div below replace itself entirely when clicked</li>
       <li>Use <code>hx-get="/api/swap"</code> and <code>hx-swap="outerHTML"</code></li>
       <li>Add <code>hx-trigger="click"</code> so clicking triggers the request</li>
+      <li>
+        Suggerimento: Il valore predefinito di <code>hx-swap</code> è
+        <code>innerHTML</code> (sostituisce il contenuto). Prova <code>outerHTML</code> per
+        sostituire l'elemento stesso.
+      </li>
+      <li>
+        Suggerimento: Con <code>outerHTML</code> l'intero div viene rimpiazzato con la risposta del
+        server
+      </li>
     </ol>
   </div>
 

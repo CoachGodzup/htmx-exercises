@@ -15,6 +15,13 @@
       <li>Use <code>hx-post="/api/val"</code> to send a POST request</li>
       <li>Add <code>hx-vals='{"value": "test"}'</code> to send extra parameters</li>
       <li>Set <code>hx-target="#output"</code> to display the response</li>
+      <li>
+        Suggerimento: <code>hx-ext="json-enc"</code> abilita la codifica JSON per la richiesta POST
+      </li>
+      <li>
+        Suggerimento: Usa <code>hx-vals='{"value": "test"}'</code> per inviare parametri extra come
+        JSON
+      </li>
     </ol>
   </div>
 
@@ -27,7 +34,7 @@
   </div>
 
   <script type="text/plain" id="initial-code" hidden>
-    <button hx-ext="json-enc" hx-post="/api/val" hx-target="#output">Send JSON</button>
+    <button hx-post="/api/val" hx-target="#output">Send JSON</button>
     <div id="output"></div>
   </script>
 

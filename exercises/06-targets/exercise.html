@@ -17,6 +17,14 @@
         <code>next</code>, or <code>#target-result</code>
       </li>
       <li>The target element <code>#target-result</code> is inside the container</li>
+      <li>
+        Suggerimento: <code>hx-target="#target-result"</code> indirizza la risposta al div fratello
+        dentro il container
+      </li>
+      <li>
+        Suggerimento: La risposta da <code>/api/target</code> verrà inserita nell'elemento matching
+        il selettore
+      </li>
     </ol>
   </div>
 
@@ -30,7 +38,7 @@
 
   <script type="text/plain" id="initial-code" hidden>
     <div class="container">
-      <button hx-get="/api/target" hx-target="#target-result">Load into target</button>
+      <button hx-get="/api/target">Load into target</button>
       <div id="target-result"></div>
     </div>
   </script>

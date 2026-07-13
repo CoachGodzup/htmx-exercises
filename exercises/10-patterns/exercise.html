@@ -12,6 +12,14 @@
       <li>Use multiple triggers: <code>hx-trigger="click, keyup[key=='Enter'], blur"</code></li>
       <li>Use <code>hx-swap="outerHTML"</code> to replace the element</li>
       <li>Add <code>hx-vals='{"item": "Click to edit"}'</code></li>
+      <li>
+        Suggerimento: Usa <code>hx-put="/api/pattern"</code> con trigger multipli:
+        <code>click, keyup[key=='Enter'], blur</code>
+      </li>
+      <li>
+        Suggerimento: Aggiungi <code>hx-swap="outerHTML"</code> e
+        <code>hx-vals='{"item": "Click to edit"}'</code> per completare il pattern
+      </li>
     </ol>
   </div>
 
@@ -24,15 +32,7 @@
   </div>
 
   <script type="text/plain" id="initial-code" hidden>
-    <div
-      hx-put="/api/pattern"
-      hx-trigger="click, keyup[key=='Enter'], blur"
-      hx-swap="outerHTML"
-      hx-vals='{"item": "Click to edit"}'
-      class="click-to-edit"
-    >
-      Click to edit
-    </div>
+    <div class="click-to-edit">Click to edit</div>
   </script>
 
   <div class="controls">

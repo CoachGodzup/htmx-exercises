@@ -13,6 +13,13 @@
     <ol>
       <li>Create a button that makes a GET request to <code>/api/target</code></li>
       <li>Make the response go to <code>#target-output</code> using <code>hx-target</code></li>
+      <li>
+        Suggerimento: <code>hx-target="#target-output"</code> fa andare la risposta in un elemento
+        specifico, non nel bottone
+      </li>
+      <li>
+        Suggerimento: Il target ha già <code>id="target-output"</code> — usalo nel selettore CSS
+      </li>
     </ol>
   </div>
 
@@ -25,7 +32,7 @@
   </div>
 
   <script type="text/plain" id="initial-code" hidden>
-    <button hx-get="/api/target" hx-target="#target-output">Load into target</button>
+    <button hx-get="/api/target">Load into target</button>
     <div id="target-output"></div>
   </script>
 

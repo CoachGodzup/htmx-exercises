@@ -11,6 +11,14 @@
       <li>Create a div with <code>ws-connect="ws://localhost:3000/api/ws"</code></li>
       <li>Add a form with <code>ws-send</code> to send messages</li>
       <li>Use <code>hx-target="#chat"</code> and <code>hx-swap="beforeend"</code> on the form</li>
+      <li>
+        Suggerimento: Aggiungi <code>ws-connect="ws://localhost:3000/api/ws"</code> al div chat per
+        aprire una connessione WebSocket
+      </li>
+      <li>
+        Suggerimento: Aggiungi <code>ws-send</code> al form per inviare messaggi via WebSocket
+        quando viene sottomesso
+      </li>
     </ol>
   </div>
 
@@ -23,10 +31,10 @@
   </div>
 
   <script type="text/plain" id="initial-code" hidden>
-    <div ws-connect="ws://localhost:3000/api/ws" id="chat">
+    <div id="chat">
       <div>Messages:</div>
     </div>
-    <form ws-send hx-target="#chat" hx-swap="beforeend">
+    <form hx-target="#chat" hx-swap="beforeend">
       <input name="msg" placeholder="Message..." required />
       <button type="submit">Send</button>
     </form>
